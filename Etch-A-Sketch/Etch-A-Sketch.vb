@@ -9,6 +9,75 @@ Option Explicit On
 Option Compare Text
 
 Public Class Form1
+    Sub Graticules()
+        Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Black)
+        Dim y As Integer = 0
+        Dim x As Integer = 0
+        Do Until y = 300
+            y += 10
+            graphics.DrawLine(pen, 0, y, 800, y)
+        Loop
+
+        Do Until x = 800
+            x += 10
+            graphics.DrawLine(pen, x, 0, x, 300)
+        Loop
+    End Sub
+    Sub SineWave()
+        Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Green)
+        Dim ymax As Integer = DrawingPictureBox.Height \ 2
+        Dim oldx, newy As Integer
+        Dim oldy As Integer = DrawingPictureBox.Height \ 2
+
+        For x = 0 To 800
+            newy = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + DrawingPictureBox.Height \ 2
+            graphics.DrawLine(pen, oldx, oldy, x, newy)
+            oldx = x
+            oldy = newy
+        Next
+
+    End Sub
+
+    Sub CosineWave()
+        Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Blue)
+        Dim ymax As Integer = DrawingPictureBox.Height \ 2
+        Dim oldx, newy As Integer
+        Dim oldy As Integer = DrawingPictureBox.Height \ 2
+
+        For x = 0 To 800
+            newy = CInt(ymax * Math.Cos((Math.PI / 180) * (x * 1))) + DrawingPictureBox.Height \ 2
+            graphics.DrawLine(pen, oldx, oldy, x, newy)
+            oldx = x
+            oldy = newy
+        Next
+    End Sub
+
+    'Sub TangentWave()
+    '    Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
+    '    Dim pen As New Pen(Color.Red)
+    '    Dim xTan As Double = 1.0
+    '    Dim yTan As Double = 2.0
+    '    Dim angle As Double
+    '    Dim radians As Double
+    '    Dim result As Double
+
+    '    Dim ymax As Double = DrawingPictureBox.Height \ 2
+    '    Dim oldx, newy As Double
+    '    Dim oldy As Double = DrawingPictureBox.Height \ 2
+
+    '    For x = 0 To 800
+    '        radians = angle * (Math.PI / 180)
+    '        result = Math.Tan(radians)
+    '        angle = CInt(ymax * Math.Tan((Math.PI / 180) * (x * 1))) + DrawingPictureBox.Height \ 2
+    '        graphics.DrawLine(pen, oldx, oldy, x, newy)
+    '        newy = result
+    '        oldx = x
+    '        oldy = newy
+    '    Next
+    'End Sub
 
     'Event Handelers___________________________________________________________________________________________________________________________________________________________________
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click, ExitToolStripMenuItem.Click, ExitToolStripMenuItem1.Click
@@ -20,11 +89,18 @@ Public Class Form1
     End Sub
 
     Private Sub DrawWaveformButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformButton.Click, DrawWaveformsToolStripMenuItem.Click, DrawWaveformToolStripMenuItem.Click
-
+        Graticules()
+        SineWave()
+        CosineWave()
+        'TangentWave()
     End Sub
 
     Private Sub SelectColorButton_Click(sender As Object, e As EventArgs) Handles SelectColorButton.Click, SelectColorToolStripMenuItem.Click, SetColorToolStripMenuItem.Click
 
     End Sub
 
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        Me.Hide()
+        AboutForm.Show()
+    End Sub
 End Class
