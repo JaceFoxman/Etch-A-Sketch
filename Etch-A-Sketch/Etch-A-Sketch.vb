@@ -19,6 +19,12 @@ Public Class Form1
         Return _forecolor
     End Function
 
+    Function DialogBox() As Color
+        ColorDialog.ShowDialog()
+        SetColor(ColorDialog.Color)
+        Return SetColor()
+    End Function
+
     'Draw with mouse_____________________________________________________________________________________________
     Private Sub DrawingPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove
         Static oldx, oldy As Integer
@@ -30,8 +36,7 @@ Public Class Form1
             Case "Right"
 
             Case "Middle"
-
-
+                DialogBox()
         End Select
         oldx = e.X
         oldy = e.Y
@@ -121,7 +126,6 @@ Public Class Form1
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click, ClearToolStripMenuItem.Click, ClearToolStripMenuItem1.Click
-
         DrawingPictureBox.Refresh()
     End Sub
 
@@ -133,7 +137,7 @@ Public Class Form1
     End Sub
 
     Private Sub SelectColorButton_Click(sender As Object, e As EventArgs) Handles SelectColorButton.Click, SelectColorToolStripMenuItem.Click, SetColorToolStripMenuItem.Click
-
+        DialogBox()
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click

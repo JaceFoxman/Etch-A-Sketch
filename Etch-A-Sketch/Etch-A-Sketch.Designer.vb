@@ -47,6 +47,7 @@ Partial Class Form1
         Me.ClearToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ColorDialog = New System.Windows.Forms.ColorDialog()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TopMenuStrip.SuspendLayout()
         Me.ContextMenuStrip.SuspendLayout()
@@ -277,4 +278,5 @@ Partial Class Form1
     Friend WithEvents HelpToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ClearToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ColorDialog As ColorDialog
 End Class
