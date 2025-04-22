@@ -54,14 +54,15 @@ Public Class DrawingForm
         Dim pen As New Pen(Color.Black)
         Dim y As Integer = 0
         Dim x As Integer = 0
-        Do Until y = 300
-            y += 10
-            graphics.DrawLine(pen, 0, y, 800, y)
+
+        Do Until y > DrawingPictureBox.Height
+            y += (DrawingPictureBox.Height \ 10)
+            graphics.DrawLine(pen, 0, y, DrawingPictureBox.Width, y)
         Loop
 
-        Do Until x = 800
-            x += 10
-            graphics.DrawLine(pen, x, 0, x, 300)
+        Do Until x > DrawingPictureBox.Width
+            x += (DrawingPictureBox.Width \ 10)
+            graphics.DrawLine(pen, x, 0, x, DrawingPictureBox.Height)
         Loop
 
     End Sub

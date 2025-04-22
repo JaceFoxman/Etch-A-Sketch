@@ -68,9 +68,7 @@ Partial Class DrawingForm
         '
         'ExitButton
         '
-        Me.ExitButton.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ExitButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ExitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ExitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.ExitButton.Location = New System.Drawing.Point(666, 345)
@@ -83,9 +81,7 @@ Partial Class DrawingForm
         '
         'ClearButton
         '
-        Me.ClearButton.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ClearButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ClearButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.ClearButton.Location = New System.Drawing.Point(525, 345)
         Me.ClearButton.Name = "ClearButton"
@@ -97,9 +93,8 @@ Partial Class DrawingForm
         '
         'SelectColorButton
         '
-        Me.SelectColorButton.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SelectColorButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.SelectColorButton.BackColor = System.Drawing.SystemColors.Menu
         Me.SelectColorButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.SelectColorButton.Location = New System.Drawing.Point(12, 345)
         Me.SelectColorButton.Name = "SelectColorButton"
@@ -107,13 +102,11 @@ Partial Class DrawingForm
         Me.SelectColorButton.TabIndex = 0
         Me.SelectColorButton.Text = "&Select Color"
         Me.FormToolTip.SetToolTip(Me.SelectColorButton, "Changes Foreground Color")
-        Me.SelectColorButton.UseVisualStyleBackColor = True
+        Me.SelectColorButton.UseVisualStyleBackColor = False
         '
         'DrawWaveformButton
         '
-        Me.DrawWaveformButton.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DrawWaveformButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DrawWaveformButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.DrawWaveformButton.Location = New System.Drawing.Point(153, 345)
         Me.DrawWaveformButton.Name = "DrawWaveformButton"
