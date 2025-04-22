@@ -9,6 +9,40 @@ Option Explicit On
 Option Compare Text
 
 Public Class Form1
+
+    'Set Color__________________________________________________________________________
+    Function SetColor(Optional newColor As Color = Nothing) As Color
+        Static _forecolor As Color = Color.Black
+        If newColor <> Nothing Then
+            _forecolor = newColor
+        End If
+        Return _forecolor
+    End Function
+
+    'Draw with mouse_____________________________________________________________________________________________
+    Private Sub DrawingPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove
+        Static oldx, oldy As Integer
+
+        Me.Text = $"({e.X}, {e.Y})"
+        Select Case e.Button.ToString
+            Case "Left"
+                DrawWithMouse(oldx, oldy, e.X, e.Y)
+            Case "Right"
+
+            Case "Middle"
+
+
+        End Select
+        oldx = e.X
+        oldy = e.Y
+    End Sub
+    Sub DrawWithMouse(oldx As Integer, oldY As Integer, newX As Integer, newY As Integer)
+        Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(SetColor)
+        graphics.DrawLine(pen, oldx, oldY, newX, newY)
+        graphics.Dispose()
+    End Sub
+    'Draw WaveForm Code__________________________________________________________________________________________
     Sub Graticules()
         Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Black)
@@ -23,6 +57,7 @@ Public Class Form1
             x += 10
             graphics.DrawLine(pen, x, 0, x, 300)
         Loop
+
     End Sub
     Sub SineWave()
         Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
@@ -53,6 +88,7 @@ Public Class Form1
             oldx = x
             oldy = newy
         Next
+
     End Sub
 
     'Sub TangentWave()
@@ -85,6 +121,7 @@ Public Class Form1
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click, ClearToolStripMenuItem.Click, ClearToolStripMenuItem1.Click
+
         DrawingPictureBox.Refresh()
     End Sub
 

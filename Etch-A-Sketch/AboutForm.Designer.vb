@@ -23,6 +23,7 @@ Partial Class AboutForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.ReturnButton = New System.Windows.Forms.Button()
+        Me.AboutLabel = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ReturnButton
@@ -34,11 +35,21 @@ Partial Class AboutForm
         Me.ReturnButton.Text = "Return"
         Me.ReturnButton.UseVisualStyleBackColor = True
         '
+        'AboutLabel
+        '
+        Me.AboutLabel.Font = New System.Drawing.Font("Consolas", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AboutLabel.Location = New System.Drawing.Point(20, 23)
+        Me.AboutLabel.Name = "AboutLabel"
+        Me.AboutLabel.Size = New System.Drawing.Size(767, 299)
+        Me.AboutLabel.TabIndex = 1
+        Me.AboutLabel.Text = "Etch-A-Sketch" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "By: Jason Permann" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Spring 2025"
+        '
         'AboutForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.AboutLabel)
         Me.Controls.Add(Me.ReturnButton)
         Me.Name = "AboutForm"
         Me.Text = "AboutForm"
@@ -47,4 +58,5 @@ Partial Class AboutForm
     End Sub
 
     Friend WithEvents ReturnButton As Button
+    Friend WithEvents AboutLabel As Label
 End Class
