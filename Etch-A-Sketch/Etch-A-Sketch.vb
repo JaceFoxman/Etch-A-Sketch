@@ -8,7 +8,7 @@ Option Strict On
 Option Explicit On
 Option Compare Text
 
-Public Class Form1
+Public Class DrawingForm
 
     'Set Color__________________________________________________________________________
     Function SetColor(Optional newColor As Color = Nothing) As Color
@@ -20,6 +20,7 @@ Public Class Form1
     End Function
 
     Function DialogBox() As Color
+        'Make sure to add the tool "Color Dialog Box" added to front pannel to work
         ColorDialog.ShowDialog()
         SetColor(ColorDialog.Color)
         Return SetColor()
@@ -47,7 +48,7 @@ Public Class Form1
         graphics.DrawLine(pen, oldx, oldY, newX, newY)
         graphics.Dispose()
     End Sub
-    'Draw WaveForm Code__________________________________________________________________________________________
+    'Draw WaveForm______________________________________________________________________________________________
     Sub Graticules()
         Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Black)
@@ -70,9 +71,10 @@ Public Class Form1
         Dim ymax As Integer = DrawingPictureBox.Height \ 2
         Dim oldx, newy As Integer
         Dim oldy As Integer = DrawingPictureBox.Height \ 2
+        Dim degresPerGraticule As Double = 360 / DrawingPictureBox.Width
 
-        For x = 0 To 800
-            newy = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + DrawingPictureBox.Height \ 2
+        For x = 0 To DrawingPictureBox.Width
+            newy = CInt(ymax * Math.Sin((Math.PI / 180) * (x * degresPerGraticule))) + DrawingPictureBox.Height \ 2
             graphics.DrawLine(pen, oldx, oldy, x, newy)
             oldx = x
             oldy = newy
@@ -85,10 +87,11 @@ Public Class Form1
         Dim pen As New Pen(Color.Blue)
         Dim ymax As Integer = DrawingPictureBox.Height \ 2
         Dim oldx, newy As Integer
-        Dim oldy As Integer = DrawingPictureBox.Height \ 2
+        Dim oldy As Integer = DrawingPictureBox.Height 'remove the divide 2 here so cosine starts at the right point 
+        Dim degresPerGraticule As Double = 360 / DrawingPictureBox.Width
 
-        For x = 0 To 800
-            newy = CInt(ymax * Math.Cos((Math.PI / 180) * (x * 1))) + DrawingPictureBox.Height \ 2
+        For x = 0 To DrawingPictureBox.Width
+            newy = CInt(ymax * Math.Cos((Math.PI / 180) * (x * degresPerGraticule))) + DrawingPictureBox.Height \ 2
             graphics.DrawLine(pen, oldx, oldy, x, newy)
             oldx = x
             oldy = newy
@@ -120,16 +123,33 @@ Public Class Form1
     '    Next
     'End Sub
 
+    'Clear Functions___________________________________________________________________________________________________________________________________________________________________
+    Sub ShakeAndClear()
+        Dim defaultYPosition As Integer = 39
+        Dim defaultXPosition As Integer = 7
+        Dim yPos1 As Integer = 75
+        Dim xPos1 As Integer = 30
+
+        xPos1 = DrawingPictureBox.Location.X
+        yPos1 = DrawingPictureBox.Location.Y
+
+        defaultXPosition = DrawingPictureBox.Location.X
+        defaultYPosition = DrawingPictureBox.Location.Y
+
+        My.Computer.Audio.Play(My.Resources.KH_Select, AudioPlayMode.Background)
+        DrawingPictureBox.Refresh()
+    End Sub
     'Event Handelers___________________________________________________________________________________________________________________________________________________________________
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click, ExitToolStripMenuItem.Click, ExitToolStripMenuItem1.Click
         Me.Close()
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click, ClearToolStripMenuItem.Click, ClearToolStripMenuItem1.Click
-        DrawingPictureBox.Refresh()
+        ShakeAndClear()
     End Sub
 
     Private Sub DrawWaveformButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformButton.Click, DrawWaveformsToolStripMenuItem.Click, DrawWaveformToolStripMenuItem.Click
+        ShakeAndClear()
         Graticules()
         SineWave()
         CosineWave()

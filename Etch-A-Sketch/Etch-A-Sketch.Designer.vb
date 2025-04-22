@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class DrawingForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -55,6 +55,9 @@ Partial Class Form1
         '
         'DrawingPictureBox
         '
+        Me.DrawingPictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DrawingPictureBox.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.DrawingPictureBox.Location = New System.Drawing.Point(7, 39)
         Me.DrawingPictureBox.Name = "DrawingPictureBox"
@@ -65,6 +68,9 @@ Partial Class Form1
         '
         'ExitButton
         '
+        Me.ExitButton.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ExitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ExitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.ExitButton.Location = New System.Drawing.Point(666, 345)
@@ -77,6 +83,9 @@ Partial Class Form1
         '
         'ClearButton
         '
+        Me.ClearButton.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ClearButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.ClearButton.Location = New System.Drawing.Point(525, 345)
         Me.ClearButton.Name = "ClearButton"
@@ -88,6 +97,9 @@ Partial Class Form1
         '
         'SelectColorButton
         '
+        Me.SelectColorButton.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SelectColorButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.SelectColorButton.Location = New System.Drawing.Point(12, 345)
         Me.SelectColorButton.Name = "SelectColorButton"
@@ -99,6 +111,9 @@ Partial Class Form1
         '
         'DrawWaveformButton
         '
+        Me.DrawWaveformButton.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DrawWaveformButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.DrawWaveformButton.Location = New System.Drawing.Point(153, 345)
         Me.DrawWaveformButton.Name = "DrawWaveformButton"
@@ -115,7 +130,7 @@ Partial Class Form1
         Me.TopMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.TopMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.TopMenuStrip.Name = "TopMenuStrip"
-        Me.TopMenuStrip.Size = New System.Drawing.Size(815, 33)
+        Me.TopMenuStrip.Size = New System.Drawing.Size(815, 36)
         Me.TopMenuStrip.TabIndex = 5
         Me.TopMenuStrip.Text = "TopMenuStrip"
         '
@@ -228,7 +243,7 @@ Partial Class Form1
         Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(164, 34)
         Me.AboutToolStripMenuItem1.Text = "About"
         '
-        'Form1
+        'DrawingForm
         '
         Me.AcceptButton = Me.DrawWaveformButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -243,7 +258,7 @@ Partial Class Form1
         Me.Controls.Add(Me.DrawingPictureBox)
         Me.Controls.Add(Me.TopMenuStrip)
         Me.MainMenuStrip = Me.TopMenuStrip
-        Me.Name = "Form1"
+        Me.Name = "DrawingForm"
         Me.Text = "Etch-A-Sketch"
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TopMenuStrip.ResumeLayout(False)

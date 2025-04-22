@@ -128,5 +128,11 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KH1 Cancel.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KH Select.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
