@@ -8,6 +8,7 @@ Option Strict On
 Option Explicit On
 Option Compare Text
 
+Imports System.Threading.Thread
 Public Class DrawingForm
 
     'Set Color__________________________________________________________________________
@@ -30,7 +31,6 @@ Public Class DrawingForm
     Private Sub DrawingPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove
         Static oldx, oldy As Integer
 
-        Me.Text = $"({e.X}, {e.Y})"
         Select Case e.Button.ToString
             Case "Left"
                 DrawWithMouse(oldx, oldy, e.X, e.Y)
@@ -126,18 +126,20 @@ Public Class DrawingForm
 
     'Clear Functions___________________________________________________________________________________________________________________________________________________________________
     Sub ShakeAndClear()
-        Dim defaultYPosition As Integer = 39
-        Dim defaultXPosition As Integer = 7
-        Dim yPos1 As Integer = 75
-        Dim xPos1 As Integer = 30
+        Dim movePosition As Integer = 100
+        Try
+            My.Computer.Audio.Play(My.Resources.KH_Select, AudioPlayMode.Background)
+        Catch ex As Exception
+            MsgBox("Missing Resources", MsgBoxStyle.Critical, "Error")
+        End Try
 
-        xPos1 = DrawingPictureBox.Location.X
-        yPos1 = DrawingPictureBox.Location.Y
+        For i = 1 To 10
+            Me.Top += movePosition
+            Me.Left += movePosition
+            Sleep(100)
+            movePosition *= -1 'need this to bring back to original position
+        Next
 
-        defaultXPosition = DrawingPictureBox.Location.X
-        defaultYPosition = DrawingPictureBox.Location.Y
-
-        My.Computer.Audio.Play(My.Resources.KH_Select, AudioPlayMode.Background)
         DrawingPictureBox.Refresh()
     End Sub
     'Event Handelers___________________________________________________________________________________________________________________________________________________________________

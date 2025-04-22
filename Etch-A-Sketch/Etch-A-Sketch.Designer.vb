@@ -131,7 +131,7 @@ Partial Class DrawingForm
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(54, 29)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(54, 30)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'ExitToolStripMenuItem
@@ -144,7 +144,7 @@ Partial Class DrawingForm
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectColorToolStripMenuItem, Me.DrawWaveformsToolStripMenuItem, Me.ClearToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(58, 29)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(58, 30)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'SelectColorToolStripMenuItem
@@ -169,7 +169,7 @@ Partial Class DrawingForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(65, 29)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(65, 30)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
