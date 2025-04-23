@@ -155,7 +155,7 @@ Public Class DrawingForm
     Private Sub SelectColorButton_Click(sender As Object, e As EventArgs) Handles SelectColorButton.Click, SelectColorToolStripMenuItem.Click, SetColorToolStripMenuItem.Click
         DialogBox()
     End Sub
-    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click, AboutToolStripMenuItem1.Click
         Me.Hide()
         AboutForm.Show()
     End Sub
