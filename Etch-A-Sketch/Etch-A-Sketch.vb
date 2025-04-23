@@ -35,7 +35,7 @@ Public Class DrawingForm
             Case "Left"
                 DrawWithMouse(oldx, oldy, e.X, e.Y)
             Case "Right"
-
+                'context menu set in drawing picture box properties 
             Case "Middle"
                 DialogBox()
         End Select
@@ -100,33 +100,30 @@ Public Class DrawingForm
 
     End Sub
 
-    'Sub TangentWave()
-    '    Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
-    '    Dim pen As New Pen(Color.Red)
-    '    Dim xTan As Double = 1.0
-    '    Dim yTan As Double = 2.0
-    '    Dim angle As Double
-    '    Dim radians As Double
-    '    Dim result As Double
+    Sub TangentWave()
+        Dim graphics As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Red)
+        Dim ymax As Integer = DrawingPictureBox.Height \ 2
+        Dim oldx, newy As Integer
+        Dim oldy As Integer = DrawingPictureBox.Height \ 2
+        Dim degresPerGraticule As Double = 360 / DrawingPictureBox.Width
 
-    '    Dim ymax As Double = DrawingPictureBox.Height \ 2
-    '    Dim oldx, newy As Double
-    '    Dim oldy As Double = DrawingPictureBox.Height \ 2
+        If DrawingPictureBox.Width < 2400 Then
+            For x = 0 To DrawingPictureBox.Width
+                newy = CInt(ymax * Math.Tan((Math.PI / 180) * (x * degresPerGraticule))) + DrawingPictureBox.Height \ 2
+                graphics.DrawLine(pen, oldx, oldy, x, newy)
+                oldx = x
+                oldy = newy
+            Next
+        ElseIf DrawingPictureBox.Width > 2400 Then
 
-    '    For x = 0 To 800
-    '        radians = angle * (Math.PI / 180)
-    '        result = Math.Tan(radians)
-    '        angle = CInt(ymax * Math.Tan((Math.PI / 180) * (x * 1))) + DrawingPictureBox.Height \ 2
-    '        graphics.DrawLine(pen, oldx, oldy, x, newy)
-    '        newy = result
-    '        oldx = x
-    '        oldy = newy
-    '    Next
-    'End Sub
+        End If
+
+    End Sub
 
     'Clear Functions___________________________________________________________________________________________________________________________________________________________________
     Sub ShakeAndClear()
-        Dim movePosition As Integer = 100
+        Dim movePosition As Integer = RNG(1, 350) 'RNG not nedded just added for randomness on the shake
         Try
             My.Computer.Audio.Play(My.Resources.KH_Select, AudioPlayMode.Background)
         Catch ex As Exception
@@ -142,6 +139,15 @@ Public Class DrawingForm
 
         DrawingPictureBox.Refresh()
     End Sub
+
+    Function RNG(min As Integer, max As Integer) As Integer
+        Dim value As Single
+        Randomize()
+        value = Rnd()
+        value *= max - min
+        value += min
+        Return CInt(Math.Ceiling(value))
+    End Function
     'Event Handelers___________________________________________________________________________________________________________________________________________________________________
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click, ExitToolStripMenuItem.Click, ExitToolStripMenuItem1.Click
         Me.Close()
@@ -156,7 +162,7 @@ Public Class DrawingForm
         Graticules()
         SineWave()
         CosineWave()
-        'TangentWave()
+        TangentWave()
     End Sub
 
     Private Sub SelectColorButton_Click(sender As Object, e As EventArgs) Handles SelectColorButton.Click, SelectColorToolStripMenuItem.Click, SetColorToolStripMenuItem.Click
