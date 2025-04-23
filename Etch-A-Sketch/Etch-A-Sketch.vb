@@ -8,7 +8,7 @@ Option Strict On
 Option Explicit On
 Option Compare Text
 
-Imports System.Threading.Thread
+Imports System.Threading.Thread 'add to allow sleep function to work
 Public Class DrawingForm
     'Set Color__________________________________________________________________________
     Function SetColor(Optional newColor As Color = Nothing) As Color
@@ -100,17 +100,18 @@ Public Class DrawingForm
         Dim oldx, newy As Integer
         Dim oldy As Integer = DrawingPictureBox.Height \ 2
         Dim degresPerGraticule As Double = 360 / DrawingPictureBox.Width
-
-        If DrawingPictureBox.Width < 2400 Then
+        Try
             For x = 0 To DrawingPictureBox.Width
                 newy = CInt(ymax * Math.Tan((Math.PI / 180) * (x * degresPerGraticule))) + DrawingPictureBox.Height \ 2
                 graphics.DrawLine(pen, oldx, oldy, x, newy)
                 oldx = x
                 oldy = newy
             Next
-        ElseIf DrawingPictureBox.Width > 2400 Then
+        Catch ex As Exception
+            MsgBox("Tangent expression overflow", MsgBoxStyle.Critical, "Math Error")
+        End Try
 
-        End If
+
     End Sub
     'Clear Functions___________________________________________________________________________________________________________________________________________________________________
     Sub ShakeAndClear()
@@ -129,7 +130,6 @@ Public Class DrawingForm
         Next
         DrawingPictureBox.Refresh()
     End Sub
-
     Function RNG(min As Integer, max As Integer) As Integer
         Dim value As Single
         Randomize()
